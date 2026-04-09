@@ -1,6 +1,13 @@
 /* ═══════════════════════════════════════════════════════
    ParetoSlider — Stylesheet
-   Based on the Kontinuous Kontext academic page template
+   Color palette: Deep Teal & Gold
+   --teal-dark:   #0d3d3a   (headings, dark text)
+   --teal-mid:    #1a5c56   (hover states)
+   --gold:        #c9a84c   (accent, links, sliders)
+   --gold-dark:   #a8873a   (hover on gold)
+   --bg:          #f9f7f2   (page & section backgrounds)
+   --bg-header:   #0d3d3a   (header band)
+   --cream:       #fffdf8   (white areas)
 ═══════════════════════════════════════════════════════ */
 
 * {
@@ -12,8 +19,8 @@
 body {
     font-family: 'Georgia', 'Times New Roman', serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #fff;
+    color: #2a2a2a;
+    background-color: #f9f7f2;
 }
 
 html {
@@ -30,9 +37,9 @@ html {
 /* ═══════════════════════════ HEADER ═══════════════════════════ */
 .header {
     margin-bottom: 40px;
-    background: linear-gradient(135deg, #fafafa 0%, #f4f8ff 50%, #f0f4ff 100%);
+    background: linear-gradient(135deg, #0d3d3a 0%, #0f4a46 60%, #0d3d3a 100%);
     padding: 40px 0;
-    box-shadow: 0 4px 20px rgba(30, 60, 120, 0.08);
+    box-shadow: 0 4px 24px rgba(13, 61, 58, 0.25);
     position: relative;
     overflow: hidden;
     width: 100vw;
@@ -44,8 +51,8 @@ html {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background:
-        radial-gradient(circle at 20% 30%, rgba(66, 133, 244, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(15, 82, 186, 0.04) 0%, transparent 50%);
+        radial-gradient(circle at 15% 40%, rgba(201, 168, 76, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 85% 60%, rgba(201, 168, 76, 0.08) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -77,19 +84,19 @@ html {
     font-weight: bold;
     margin-bottom: 20px;
     line-height: 1.3;
-    color: #1a2a4a;
+    color: #f9f7f2;
     text-align: left;
 }
 
 .pareto-slider {
     font-style: italic;
     font-weight: 700;
-    color: #1a73e8;
+    color: #c9a84c;
     font-family: 'Georgia', 'Times New Roman', serif;
 }
 
 .venue-text {
-    color: #1a56a0;
+    color: #c9a84c;
     font-size: 0.8em;
 }
 
@@ -103,7 +110,7 @@ html {
     margin: 0 20px 8px 0;
     font-size: 1.15em;
     font-weight: 500;
-    color: #1a2a4a;
+    color: #e8e0d0;
     font-family: 'Georgia', 'Times New Roman', serif;
     letter-spacing: 0.3px;
 }
@@ -111,13 +118,13 @@ html {
 .header-author a {
     color: inherit;
     text-decoration: none;
-    border-bottom: 2px solid transparent;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.4);
     transition: all 0.3s ease;
 }
 
 .header-author a:hover {
-    color: #1a73e8;
-    border-bottom-color: #1a73e8;
+    color: #c9a84c;
+    border-bottom-color: #c9a84c;
 }
 
 .header-affiliations {
@@ -125,37 +132,38 @@ html {
 }
 
 .header-affiliation {
-    color: #555;
+    color: #a8c4c2;
     font-style: italic;
-    font-size: 1.1em;
+    font-size: 1.05em;
 }
 
 /* ── TL;DR box ── */
 .tldr-section {
     margin: 20px 0;
-    padding: 15px;
-    background-color: #eef4ff;
-    border-left: 4px solid #6a9fd8;
+    padding: 15px 18px;
+    background-color: rgba(201, 168, 76, 0.12);
+    border-left: 4px solid #c9a84c;
     border-radius: 0 8px 8px 0;
 }
 
 .tldr-title {
-    color: #1a2a4a;
+    color: #c9a84c;
     font-size: 1.1em;
-    font-weight: 600;
-    margin-bottom: 10px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
 }
 
 .tldr-content {
-    color: #2c3e50;
-    font-size: 1.1em;
+    color: #e8e0d0;
+    font-size: 1.05em;
     line-height: 1.6;
     margin: 0;
     font-style: italic;
 }
 
 .highlight-text {
-    color: #1a73e8;
+    color: #c9a84c;
     font-weight: 700;
     font-style: italic;
 }
@@ -168,32 +176,31 @@ html {
 
 .link-button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10px 22px;
     margin: 0 10px 10px 0;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #1a2a4a;
+    background-color: rgba(201, 168, 76, 0.15);
+    color: #c9a84c;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(200, 215, 240, 0.8);
-    box-shadow: 0 2px 6px rgba(30, 60, 120, 0.1);
+    border: 1.5px solid rgba(201, 168, 76, 0.5);
 }
 
 .link-button:hover {
-    background-color: #fff;
+    background-color: #c9a84c;
+    color: #0d3d3a;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(30, 60, 120, 0.2);
+    box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3);
 }
 
 /* ═══════════════════════════ TEASER CONTAINER ═══════════════════════════ */
 .teaser-container {
-    background: #f8f9fa;
+    background: rgba(255, 253, 248, 0.08);
     border-radius: 16px;
-    padding: 30px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(200, 220, 255, 0.4);
+    padding: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(201, 168, 76, 0.25);
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -201,13 +208,12 @@ html {
 }
 
 .simple-instruction {
-    margin-bottom: 15px;
-    color: #64748b;
-    font-size: 1.2em;
+    color: #c9a84c;
+    font-size: 1.1em;
     font-style: italic;
     font-weight: 500;
     text-align: center;
-    min-height: 3em;
+    min-height: 2.5em;
     line-height: 1.5;
     display: flex;
     align-items: center;
@@ -224,15 +230,15 @@ html {
 
 .strength-label {
     font-size: 0.85em;
-    color: #666;
+    color: #a8c4c2;
     font-weight: 500;
     min-width: 30px;
 }
 
 .strength-slider {
     flex: 1;
-    height: 8px;
-    background: linear-gradient(to right, #e0e0e0 0%, #1a73e8 100%);
+    height: 6px;
+    background: linear-gradient(to right, #c9a84c 0%, rgba(201, 168, 76, 0.2) 100%);
     border-radius: 4px;
     outline: none;
     -webkit-appearance: none;
@@ -242,35 +248,34 @@ html {
 .strength-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 24px;
-    height: 24px;
-    background: #1a73e8;
+    width: 22px;
+    height: 22px;
+    background: #c9a84c;
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 2px 6px rgba(26, 115, 232, 0.35);
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(201, 168, 76, 0.5);
 }
 
 .strength-slider::-webkit-slider-thumb:hover {
-    background: #1557b0;
-    transform: scale(1.1);
-    box-shadow: 0 3px 8px rgba(26, 115, 232, 0.45);
+    background: #a8873a;
+    transform: scale(1.15);
+    box-shadow: 0 3px 12px rgba(201, 168, 76, 0.6);
 }
 
 .strength-slider::-moz-range-thumb {
-    width: 24px;
-    height: 24px;
-    background: #1a73e8;
+    width: 22px;
+    height: 22px;
+    background: #c9a84c;
     border-radius: 50%;
     cursor: pointer;
     border: none;
-    box-shadow: 0 2px 6px rgba(26, 115, 232, 0.35);
+    box-shadow: 0 2px 8px rgba(201, 168, 76, 0.5);
 }
 
 /* ── Result image display ── */
 .edit-result {
     text-align: center;
-    padding: 10px;
     border-radius: 8px;
 }
 
@@ -279,21 +284,21 @@ html {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
 /* ═══════════════════════════ ABSTRACT ═══════════════════════════ */
 .abstract-section {
     margin: 40px 0;
-    padding: 30px;
-    background-color: #f8f9fa;
+    padding: 35px;
+    background-color: #fffdf8;
     border-radius: 12px;
-    border-left: 4px solid #8aacdc;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #c9a84c;
+    box-shadow: 0 2px 10px rgba(13, 61, 58, 0.07);
 }
 
 .abstract-section h2 {
-    color: #1a2a4a;
+    color: #0d3d3a;
     font-size: 1.8em;
     margin-bottom: 20px;
     text-align: center;
@@ -301,13 +306,13 @@ html {
 }
 
 .abstract-text {
-    color: #2c3e50;
+    color: #2a2a2a;
     font-size: 1.05em;
     line-height: 1.7;
     text-align: justify;
 }
 
-/* Inline teaser video */
+/* Inline teaser figure */
 .inline-teaser-container {
     text-align: center;
     margin: 40px 0 10px;
@@ -319,23 +324,39 @@ html {
     height: auto;
     max-height: 500px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 16px rgba(13, 61, 58, 0.12);
 }
 
-/* ═══════════════════════════ INTERACTIVE EXAMPLES ═══════════════════════════ */
+.teaser-caption {
+    margin-top: 12px;
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+/* ═══════════════════════════ SECTION HEADINGS ═══════════════════════════ */
 .interactive-examples {
     margin: 50px 0;
 }
 
 .interactive-examples h2 {
-    color: #1a2a4a;
+    color: #0d3d3a;
     font-size: 1.8em;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     text-align: center;
     font-weight: 600;
 }
 
-/* 2-column grid */
+.section-subtitle {
+    text-align: center;
+    color: #6b8f8d;
+    font-size: 1em;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+/* ─── Grids ─── */
 .examples-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -346,7 +367,6 @@ html {
     margin-right: auto;
 }
 
-/* 3-column grid */
 .examples-grid-1x3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -357,22 +377,23 @@ html {
     margin-right: auto;
 }
 
+/* ─── Tiles ─── */
 .example-tile {
-    background-color: #f8f9fa;
+    background-color: #fffdf8;
     border-radius: 12px;
     padding: 25px;
-    border: 1px solid #e9ecef;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e6e0d4;
+    box-shadow: 0 2px 10px rgba(13, 61, 58, 0.06);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .example-tile:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 20px rgba(13, 61, 58, 0.12);
 }
 
 .example-instruction {
-    color: #64748b;
+    color: #6b8f8d;
     font-size: 1em;
     font-style: italic;
     font-weight: 500;
@@ -389,6 +410,15 @@ html {
     margin-bottom: 20px;
 }
 
+/* Override slider colors inside tiles (non-header) */
+.example-tile .strength-slider {
+    background: linear-gradient(to right, #c9a84c 0%, #e6e0d4 100%);
+}
+
+.example-tile .strength-label {
+    color: #8aadab;
+}
+
 .example-result {
     text-align: center;
 }
@@ -397,14 +427,14 @@ html {
 .motivation-section {
     margin: 50px 0;
     padding: 40px;
-    background-color: #f8f9fa;
+    background-color: #fffdf8;
     border-radius: 12px;
-    border-left: 4px solid #8aacdc;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #c9a84c;
+    box-shadow: 0 2px 10px rgba(13, 61, 58, 0.06);
 }
 
 .motivation-section h2 {
-    color: #1a2a4a;
+    color: #0d3d3a;
     font-size: 1.8em;
     margin-bottom: 20px;
     text-align: center;
@@ -412,7 +442,7 @@ html {
 }
 
 .motivation-text {
-    color: #2c3e50;
+    color: #2a2a2a;
     font-size: 1.1em;
     line-height: 1.7;
     text-align: justify;
@@ -422,26 +452,34 @@ html {
 .method-section {
     margin: 50px 0;
     padding: 40px;
-    background-color: #f8f9fa;
+    background-color: #fffdf8;
     border-radius: 12px;
-    border-left: 4px solid #8aacdc;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #c9a84c;
+    box-shadow: 0 2px 10px rgba(13, 61, 58, 0.06);
 }
 
 .method-section h2 {
-    color: #1a2a4a;
+    color: #0d3d3a;
     font-size: 1.8em;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     text-align: center;
     font-weight: 600;
 }
 
 .method-overview {
-    color: #2c3e50;
+    color: #2a2a2a;
     font-size: 1.05em;
     line-height: 1.7;
     text-align: justify;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+}
+
+.method-overview a {
+    color: #1a5c56;
+}
+
+.method-overview strong {
+    color: #0d3d3a;
 }
 
 .method-img {
@@ -450,13 +488,29 @@ html {
     display: block;
     margin: 30px auto;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 14px rgba(13, 61, 58, 0.1);
+}
+
+.method-caption {
+    color: #6b8f8d;
+    font-size: 0.95em;
+    line-height: 1.6;
+    text-align: center;
+    margin-top: -10px;
+    font-style: italic;
+}
+
+/* ── Small slider labels ── */
+.strength-label.small-label {
+    font-size: 0.78em;
+    min-width: 60px;
+    text-align: center;
 }
 
 /* ═══════════════════════════ CITATION FOOTER ═══════════════════════════ */
 .citation-footer {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-top: 1px solid #dee2e6;
+    background: linear-gradient(135deg, #0d3d3a 0%, #0f4a46 100%);
+    border-top: 3px solid #c9a84c;
     padding: 50px 0;
     margin-top: 60px;
 }
@@ -468,7 +522,7 @@ html {
 }
 
 .citation-footer h3 {
-    color: #1a2a4a;
+    color: #c9a84c;
     font-size: 2rem;
     margin-bottom: 30px;
     text-align: center;
@@ -478,21 +532,21 @@ html {
 
 .bibtex-container {
     position: relative;
-    background: #ffffff;
+    background: rgba(255, 253, 248, 0.05);
     border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    border: 1px solid #e9ecef;
+    border: 1px solid rgba(201, 168, 76, 0.3);
 }
 
 .bibtex-code {
-    background: #f8f9fa;
+    background: rgba(13, 61, 58, 0.6);
     padding: 30px;
     margin: 0;
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
     font-size: 14px;
     line-height: 1.6;
-    color: #1a2a4a;
+    color: #e8e0d0;
     overflow-x: auto;
     white-space: pre;
     border: none;
@@ -504,23 +558,23 @@ html {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: #1a73e8;
-    color: white;
+    background: #c9a84c;
+    color: #0d3d3a;
     border: none;
     border-radius: 8px;
     padding: 10px 18px;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 3px 10px rgba(26, 115, 232, 0.3);
+    box-shadow: 0 3px 10px rgba(201, 168, 76, 0.35);
     z-index: 10;
 }
 
 .copy-bibtex-btn:hover {
-    background: #1557b0;
+    background: #a8873a;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(26, 115, 232, 0.4);
+    box-shadow: 0 5px 15px rgba(201, 168, 76, 0.45);
 }
 
 .copy-bibtex-btn:active {
@@ -582,41 +636,5 @@ html {
     .inline-teaser-video { max-height: 350px; }
 }
 
-/* ── Section subtitle ── */
-.section-subtitle {
-    text-align: center;
-    color: #64748b;
-    font-size: 1em;
-    font-style: italic;
-    margin-bottom: 10px;
-    margin-top: -20px;
-}
-
-/* ── Method figure caption ── */
-.method-caption {
-    color: #555;
-    font-size: 0.95em;
-    line-height: 1.6;
-    text-align: center;
-    margin-top: -10px;
-    font-style: italic;
-}
-
-/* ── Teaser figure caption ── */
-.teaser-caption {
-    margin-top: 12px;
-    color: #555;
-    font-size: 0.95em;
-    line-height: 1.5;
-    font-style: italic;
-}
-
-/* ── Small slider labels (fit longer words) ── */
-.strength-label.small-label {
-    font-size: 0.78em;
-    min-width: 60px;
-    text-align: center;
-}
-
-/* ── image placeholder styling ── */
-img { background-color: #eef2ff; }
+/* ── image placeholder ── */
+img { background-color: #f0ebe0; }
