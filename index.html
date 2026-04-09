@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParetoSlider</title>
+    <link rel="icon" type="image/png" href="assets/teaser.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']]
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ═══════════════════════════════ HEADER ═══════════════════════════════ -->
+        <header class="header">
+            <div class="header-content">
+
+                <!-- Left column: paper details -->
+                <div class="paper-details">
+                    <h1 class="title">
+                        <span class="pareto-slider">ParetoSlider</span>:
+                        Diffusion Models Post-Training for Continuous Reward Control
+                    </h1>
+                    <h1 class="title"><span class="venue-text">ICCV 2025</span></h1>
+
+                    <div class="header-authors">
+                        <span class="header-author">Shelly Golan</span>
+                        <span class="header-author">Michael Finkelson</span>
+                        <span class="header-author">Ariel Bereslavsky</span>
+                        <span class="header-author"><a href="https://yotamnitzan.github.io/" target="_blank">Yotam Nitzan</a></span>
+                        <span class="header-author"><a href="https://orpatashnik.github.io/" target="_blank">Or Patashnik</a></span>
+                    </div>
+
+                    <div class="header-affiliations">
+                        <span class="header-affiliation">Tel Aviv University</span>&#8194;
+                        <span class="header-affiliation">Lightricks</span>&#8194;
+                        <span class="header-affiliation">Adobe Research</span>
+                    </div>
+
+                    <!-- TL;DR -->
+                    <div class="tldr-section">
+                        <h3 class="tldr-title">TL;DR</h3>
+                        <p class="tldr-content">
+                            We introduce <span class="pareto-slider">ParetoSlider</span>, a multi-objective RL framework
+                            that trains a <span class="highlight-text">single diffusion model to approximate the entire Pareto front</span>,
+                            enabling users to continuously navigate competing reward trade-offs at inference time
+                            — such as photorealism vs. style, or prompt adherence vs. source preservation —
+                            without retraining or maintaining multiple checkpoints.
+                        </p>
+                    </div>
+
+                    <!-- Links -->
+                    <div class="links">
+                        <a href="#" class="link-button" target="_blank">Paper</a>
+                        <a href="https://github.com/Shelley-Golan/ParetoSlider-webpage" class="link-button" target="_blank">Code</a>
+                    </div>
+                </div>
+
+                <!-- Right column: teaser interactive demo -->
+                <div class="teaser-column">
+                    <div class="teaser-container">
+                        <div class="simple-instruction">
+                            'A chocolate cake with frosting on a stand'
+                        </div>
+                        <div class="slider-container">
+                            <span class="strength-label">Photorealistic</span>
+                            <input type="range" id="teaser-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                            <span class="strength-label">Sketch</span>
+                        </div>
+                        <div class="edit-result">
+                            <img id="teaser-image" src="assets/t2i_sketch_photo/frame_0.jpg" alt="ParetoSlider teaser" class="result-img">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+
+        <!-- ═══════════════════════════════ ABSTRACT ═══════════════════════════════ -->
+        <section class="abstract-section">
+            <h2>Abstract</h2>
+            <p class="abstract-text">
+                Reinforcement Learning (RL) post-training has become the standard for aligning generative models with
+                human preferences, yet most methods rely on a single scalar reward.
+                When multiple criteria matter, the prevailing practice of "early scalarization" collapses rewards into a
+                fixed weighted sum. This commits the model to a single trade-off point at training time, providing no
+                inference-time control over inherently conflicting goals — such as prompt adherence versus source
+                fidelity in image editing.
+                We introduce <span class="pareto-slider">ParetoSlider</span>, a multi-objective RL (MORL) framework that
+                trains a single diffusion model to approximate the entire Pareto front.
+                By conditioning the model on continuously varying preference weights during RL alignment, we enable users
+                to navigate optimal trade-offs at inference time without retraining or maintaining multiple checkpoints.
+                We evaluate <span class="pareto-slider">ParetoSlider</span> across three state-of-the-art
+                flow-matching backbones: SD3.5, FluxKontext, and LTX-2.
+                Our single preference-conditioned model matches or exceeds the performance of separately tuned baselines
+                while uniquely providing fine-grained, real-time control over competing generative goals.
+            </p>
+
+            <!-- Teaser figure -->
+            <div class="inline-teaser-container">
+                <img src="assets/teaser.png" alt="ParetoSlider enables smooth inference-time control over competing rewards via a single preference-conditioned model." class="inline-teaser-video">
+                <p class="teaser-caption">
+                    <strong>ParetoSlider</strong> enables smooth inference-time control over competing rewards
+                    via a single preference-conditioned model.
+                    <em>Top:</em> Text-to-image generation sliding between photorealism and sketch.
+                    <em>Bottom:</em> Image editing sliding between source preservation and prompt adherence.
+                </p>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════ T2I INTERACTIVE EXAMPLES ═══════════════════════════════ -->
+        <section class="interactive-examples">
+            <h2>Text-to-Image: Style Control</h2>
+            <p class="section-subtitle">Drag the slider to continuously navigate between photorealism and different artistic styles.</p>
+            <div class="examples-grid-1x3">
+
+                <!-- Example 1: easter bunny, photo ↔ sketch -->
+                <div class="example-tile">
+                    <div class="example-instruction">
+                        'An easter bunny on a spring day in a field holding a basket of easter eggs'
+                    </div>
+                    <div class="example-slider-container">
+                        <div class="slider-container">
+                            <span class="strength-label small-label">Photorealistic</span>
+                            <input type="range" id="bunny-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                            <span class="strength-label small-label">Sketch</span>
+                        </div>
+                    </div>
+                    <div class="example-result">
+                        <img id="bunny-image" src="assets/t2i_sketch_bunny/frame_0.jpg" alt="Easter Bunny" class="result-img">
+                    </div>
+                </div>
+
+                <!-- Example 2: hummingbird, photo ↔ flat vector -->
+                <div class="example-tile">
+                    <div class="example-instruction">
+                        'A hummingbird hovering near bright tropical flowers'
+                    </div>
+                    <div class="example-slider-container">
+                        <div class="slider-container">
+                            <span class="strength-label small-label">Photorealistic</span>
+                            <input type="range" id="hummingbird-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                            <span class="strength-label small-label">Flat Vector</span>
+                        </div>
+                    </div>
+                    <div class="example-result">
+                        <img id="hummingbird-image" src="assets/t2i_vector_hummingbird/frame_0.png" alt="Hummingbird" class="result-img">
+                    </div>
+                </div>
+
+                <!-- Example 3: honeybee, photo ↔ watercolor -->
+                <div class="example-tile">
+                    <div class="example-instruction">
+                        'A macro photo of a honeybee on a sunflower'
+                    </div>
+                    <div class="example-slider-container">
+                        <div class="slider-container">
+                            <span class="strength-label small-label">Photorealistic</span>
+                            <input type="range" id="bee-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                            <span class="strength-label small-label">Watercolor</span>
+                        </div>
+                    </div>
+                    <div class="example-result">
+                        <img id="bee-image" src="assets/t2i_watercolor_bee/frame_0.png" alt="Honeybee" class="result-img">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════ EDITING INTERACTIVE EXAMPLES ═══════════════════════════════ -->
+        <section class="interactive-examples">
+            <h2>Image Editing: Preservation vs. Adherence</h2>
+            <p class="section-subtitle">Drag the slider to navigate from full source preservation to full prompt adherence.</p>
+            <div class="examples-grid">
+
+                <!-- Editing 1: pixel art -->
+                <div class="example-tile">
+                    <div class="example-instruction">
+                        'Change this portrait into a pixel-art style'
+                    </div>
+                    <div class="example-slider-container">
+                        <div class="slider-container">
+                            <span class="strength-label small-label">Preserve</span>
+                            <input type="range" id="edit-oliver-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                            <span class="strength-label small-label">Edit</span>
+                        </div>
+                    </div>
+                    <div class="example-result">
+                        <img id="edit-oliver-image" src="assets/edit_face_oliver/frame_0.png" alt="Pixel Art Edit" class="result-img">
+                    </div>
+                </div>
+
+                <!-- Editing 2: Pixar -->
+                <div class="example-tile">
+                    <div class="example-instruction">
+                        'Turn this into a 3D-rendered Disney Pixar scene'
+                    </div>
+                    <div class="example-slider-container">
+                        <div class="slider-container">
+                            <span class="strength-label small-label">Preserve</span>
+                            <input type="range" id="edit-pixar-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                            <span class="strength-label small-label">Edit</span>
+                        </div>
+                    </div>
+                    <div class="example-result">
+                        <img id="edit-pixar-image" src="assets/edit_face_25/frame_0.png" alt="Pixar Edit" class="result-img">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="interactive-examples">
+            <div class="examples-grid">
+
+                <!-- Editing 3: warrior -->
+                <div class="example-tile">
+                    <div class="example-instruction">
+                        'Turn this woman into a warrior'
+                    </div>
+                    <div class="example-slider-container">
+                        <div class="slider-container">
+                            <span class="strength-label small-label">Preserve</span>
+                            <input type="range" id="edit-warrior-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                            <span class="strength-label small-label">Edit</span>
+                        </div>
+                    </div>
+                    <div class="example-result">
+                        <img id="edit-warrior-image" src="assets/edit_28/frame_0.png" alt="Warrior Edit" class="result-img">
+                    </div>
+                </div>
+
+                <!-- Editing 4: Ghibli -->
+                <div class="example-tile">
+                    <div class="example-instruction">
+                        'Change the style of this image to a Ghibli scene'
+                    </div>
+                    <div class="example-slider-container">
+                        <div class="slider-container">
+                            <span class="strength-label small-label">Preserve</span>
+                            <input type="range" id="edit-ghibli-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                            <span class="strength-label small-label">Edit</span>
+                        </div>
+                    </div>
+                    <div class="example-result">
+                        <img id="edit-ghibli-image" src="assets/edit_face_12/frame_0.png" alt="Ghibli Edit" class="result-img">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════ METHOD ═══════════════════════════════ -->
+        <section class="method-section">
+            <h2>Method</h2>
+            <div class="method-content">
+                <p class="method-overview">
+                    <span class="pareto-slider">ParetoSlider</span> introduces a preference vector \(\omega\) that
+                    simultaneously serves as a dynamic weight for <em>normalized</em> rewards and as an explicit
+                    conditioning input to the network.
+                    Because the model is conditioned on \(\omega\), it develops the foresight to produce outputs that
+                    abide by the current relative reward preference — enabling it to learn the entire Pareto front
+                    within a single set of parameters.
+                </p>
+                <p class="method-overview">
+                    A key challenge is preventing "reward hijacking," where objectives with naturally high magnitudes
+                    dominate the learning signal. We address this with a <strong>late-scalarization</strong> strategy:
+                    per-reward advantages are normalized independently before weighted aggregation with \(\omega\).
+                    This ensures the optimization landscape is defined strictly by the preference vector, not by the
+                    arbitrary raw scales of the underlying reward functions.
+                </p>
+                <p class="method-overview">
+                    We build upon <a href="https://arxiv.org/abs/2502.01016" target="_blank" style="color:#1a73e8">DiffusionNFT</a>,
+                    computing NFT losses for each reward independently and aggregating only at the final step.
+                    At inference time, users simply adjust a single slider to navigate the full Pareto front
+                    in real time.
+                </p>
+
+                <img src="assets/method_figure.png" alt="ParetoSlider method architecture" class="method-img">
+                <p class="method-caption">
+                    <strong>ParetoSlider training pipeline.</strong>
+                    (1) For each prompt and sampled \(\omega\), the policy generates \(K\) images,
+                    (2) which are scored by \(M\) reward models and normalized into per-reward advantages.
+                    (3) A DiffusionNFT loss is computed per reward and aggregated with \(\omega\) before the gradient update.
+                </p>
+            </div>
+        </section>
+
+    </div><!-- end .container -->
+
+    <!-- ═══════════════════════════════ CITATION FOOTER ═══════════════════════════════ -->
+    <footer class="citation-footer">
+        <div class="container">
+            <h3>Citation</h3>
+            <div class="bibtex-container">
+                <pre class="bibtex-code">@inproceedings{golan2025paretoSlider,
+    title={{ParetoSlider}: Diffusion Models Post-Training for Continuous Reward Control},
+    author={Golan, Shelly and Finkelson, Michael and Bereslavsky, Ariel and Nitzan, Yotam and Patashnik, Or},
+    booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    year={2025}
+}</pre>
+                <button class="copy-bibtex-btn" onclick="copyBibTeX()">Copy BibTeX</button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
