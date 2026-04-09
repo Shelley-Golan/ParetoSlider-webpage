@@ -39,13 +39,13 @@ function preload(mapping) {
 
 const MAPPINGS = {
 
-    // Header teaser: chocolate cake, photorealistic → sketch (5 frames)
+    // Header teaser: origami crane, photorealistic → sketch (5 frames)
     'teaser': {
-        0:   'assets/t2i_sketch_photo/frame_0.jpg',   // 100% photorealistic
-        25:  'assets/t2i_sketch_photo/frame_1.jpg',
-        50:  'assets/t2i_sketch_photo/frame_2.jpg',
-        75:  'assets/t2i_sketch_photo/frame_3.jpg',
-        100: 'assets/t2i_sketch_photo/frame_4.jpg'    // 100% sketch
+        0:   'assets/teaser_crane/frame_0.png',   // 100% photorealistic
+        25:  'assets/teaser_crane/frame_1.png',
+        50:  'assets/teaser_crane/frame_2.png',
+        75:  'assets/teaser_crane/frame_3.png',
+        100: 'assets/teaser_crane/frame_4.png'    // 100% sketch
     },
 
     // T2I examples (3 frames: photo → balanced → style)
