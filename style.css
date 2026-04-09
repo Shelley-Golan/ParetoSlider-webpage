@@ -36,6 +36,7 @@ html {
 
 /* ═══════════════════════════ HEADER ═══════════════════════════ */
 .header {
+    margin-top: -20px;
     margin-bottom: 40px;
     background: linear-gradient(135deg, #374151 0%, #3f4a5c 60%, #374151 100%);
     padding: 40px 0;
