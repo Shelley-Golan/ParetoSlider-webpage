@@ -83,30 +83,26 @@ const MAPPINGS = {
         100: 'assets/t2i_watercolor/frame_8.png'
     },
 
-    // Editing examples
+    // Editing examples (frame_0 = input shown statically; slider starts at frame_1)
     'edit-oliver': {
-        0:   'assets/edit_anime_55/frame_0.jpg',
-        25:  'assets/edit_anime_55/frame_1.jpg',
-        50:  'assets/edit_anime_55/frame_2.jpg',
-        75:  'assets/edit_anime_55/frame_3.jpg',
+        0:   'assets/edit_anime_55/frame_1.jpg',
+        33:  'assets/edit_anime_55/frame_2.jpg',
+        67:  'assets/edit_anime_55/frame_3.jpg',
         100: 'assets/edit_anime_55/frame_4.jpg'
     },
     'edit-pixar': {
-        0:   'assets/edit_face_25/frame_0.png',
-        33:  'assets/edit_face_25/frame_1.jpeg',
-        67:  'assets/edit_face_25/frame_2.jpeg',
+        0:   'assets/edit_face_25/frame_1.jpeg',
+        50:  'assets/edit_face_25/frame_2.jpeg',
         100: 'assets/edit_face_25/frame_3.jpeg'
     },
     'edit-warrior': {
-        0:   'assets/edit_28/frame_0.png',
-        33:  'assets/edit_28/frame_1.png',
-        67:  'assets/edit_28/frame_2.png',
+        0:   'assets/edit_28/frame_1.png',
+        50:  'assets/edit_28/frame_2.png',
         100: 'assets/edit_28/frame_3.png'
     },
     'edit-ghibli': {
-        0:   'assets/edit_face_12/frame_0.png',
-        33:  'assets/edit_face_12/frame_1.jpeg',
-        67:  'assets/edit_face_12/frame_2.jpeg',
+        0:   'assets/edit_face_12/frame_1.jpeg',
+        50:  'assets/edit_face_12/frame_2.jpeg',
         100: 'assets/edit_face_12/frame_3.jpeg'
     }
 };

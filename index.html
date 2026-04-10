@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ParetoSlider</title>
-    <link rel="icon" type="image/png" href="assets/teaser.png">
     <link rel="stylesheet" href="style.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -195,15 +194,19 @@
                     <div class="example-instruction">
                         'Convert this portrait into an anime character'
                     </div>
-                    <div class="example-slider-container">
-                        <div class="slider-container">
-                            <span class="strength-label small-label">Preserve</span>
-                            <input type="range" id="edit-oliver-slider" class="strength-slider" min="0" max="100" value="0" step="1">
-                            <span class="strength-label small-label">Edit</span>
+                    <div class="edit-result-row">
+                        <div class="edit-input-col">
+                            <div class="edit-col-label">Input</div>
+                            <img src="assets/edit_anime_55/frame_0.jpg" alt="Input" class="result-img">
                         </div>
-                    </div>
-                    <div class="example-result">
-                        <img id="edit-oliver-image" src="assets/edit_anime_55/frame_0.jpg" alt="Anime Character Edit" class="result-img">
+                        <div class="edit-output-col">
+                            <div class="slider-container" style="margin-bottom:4px;">
+                                <span class="strength-label small-label">Preserve</span>
+                                <input type="range" id="edit-oliver-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                                <span class="strength-label small-label">Edit</span>
+                            </div>
+                            <img id="edit-oliver-image" src="assets/edit_anime_55/frame_1.jpg" alt="Anime Character Edit" class="result-img">
+                        </div>
                     </div>
                 </div>
 
@@ -212,15 +215,19 @@
                     <div class="example-instruction">
                         'Turn this woman into a warrior'
                     </div>
-                    <div class="example-slider-container">
-                        <div class="slider-container">
-                            <span class="strength-label small-label">Preserve</span>
-                            <input type="range" id="edit-warrior-slider" class="strength-slider" min="0" max="100" value="0" step="1">
-                            <span class="strength-label small-label">Edit</span>
+                    <div class="edit-result-row">
+                        <div class="edit-input-col">
+                            <div class="edit-col-label">Input</div>
+                            <img src="assets/edit_28/frame_0.png" alt="Input" class="result-img">
                         </div>
-                    </div>
-                    <div class="example-result">
-                        <img id="edit-warrior-image" src="assets/edit_28/frame_0.png" alt="Warrior Edit" class="result-img">
+                        <div class="edit-output-col">
+                            <div class="slider-container" style="margin-bottom:4px;">
+                                <span class="strength-label small-label">Preserve</span>
+                                <input type="range" id="edit-warrior-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                                <span class="strength-label small-label">Edit</span>
+                            </div>
+                            <img id="edit-warrior-image" src="assets/edit_28/frame_1.png" alt="Warrior Edit" class="result-img">
+                        </div>
                     </div>
                 </div>
 
@@ -235,15 +242,19 @@
                     <div class="example-instruction">
                         'Turn this into a 3D-rendered Disney Pixar scene'
                     </div>
-                    <div class="example-slider-container">
-                        <div class="slider-container">
-                            <span class="strength-label small-label">Preserve</span>
-                            <input type="range" id="edit-pixar-slider" class="strength-slider" min="0" max="100" value="0" step="1">
-                            <span class="strength-label small-label">Edit</span>
+                    <div class="edit-result-row">
+                        <div class="edit-input-col">
+                            <div class="edit-col-label">Input</div>
+                            <img src="assets/edit_face_25/frame_0.png" alt="Input" class="result-img">
                         </div>
-                    </div>
-                    <div class="example-result">
-                        <img id="edit-pixar-image" src="assets/edit_face_25/frame_0.png" alt="Pixar Edit" class="result-img">
+                        <div class="edit-output-col">
+                            <div class="slider-container" style="margin-bottom:4px;">
+                                <span class="strength-label small-label">Preserve</span>
+                                <input type="range" id="edit-pixar-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                                <span class="strength-label small-label">Edit</span>
+                            </div>
+                            <img id="edit-pixar-image" src="assets/edit_face_25/frame_1.jpeg" alt="Pixar Edit" class="result-img">
+                        </div>
                     </div>
                 </div>
 
@@ -252,15 +263,19 @@
                     <div class="example-instruction">
                         'Change the style of this image to a Ghibli scene'
                     </div>
-                    <div class="example-slider-container">
-                        <div class="slider-container">
-                            <span class="strength-label small-label">Preserve</span>
-                            <input type="range" id="edit-ghibli-slider" class="strength-slider" min="0" max="100" value="0" step="1">
-                            <span class="strength-label small-label">Edit</span>
+                    <div class="edit-result-row">
+                        <div class="edit-input-col">
+                            <div class="edit-col-label">Input</div>
+                            <img src="assets/edit_face_12/frame_0.png" alt="Input" class="result-img">
                         </div>
-                    </div>
-                    <div class="example-result">
-                        <img id="edit-ghibli-image" src="assets/edit_face_12/frame_0.png" alt="Ghibli Edit" class="result-img">
+                        <div class="edit-output-col">
+                            <div class="slider-container" style="margin-bottom:4px;">
+                                <span class="strength-label small-label">Preserve</span>
+                                <input type="range" id="edit-ghibli-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                                <span class="strength-label small-label">Edit</span>
+                            </div>
+                            <img id="edit-ghibli-image" src="assets/edit_face_12/frame_1.jpeg" alt="Ghibli Edit" class="result-img">
+                        </div>
                     </div>
                 </div>
 
