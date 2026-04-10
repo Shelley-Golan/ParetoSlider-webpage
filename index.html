@@ -452,6 +452,79 @@
             </div>
         </section>
 
+        <!-- ═══════════════════════════════ COMPARISONS ═══════════════════════════════ -->
+        <section class="method-section">
+            <h2>Comparisons</h2>
+            <div class="method-content">
+                <div style="display:flex; gap:30px; align-items:flex-start; margin-bottom:28px;">
+
+                    <!-- Left: Pareto plot -->
+                    <div style="flex:0 0 38%;">
+                        <img src="assets/baselines/pareto_plot/pareto_sketch.png" alt="Pareto front comparison" style="width:100%; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.08);">
+                    </div>
+
+                    <!-- Right: image grid -->
+                    <div style="flex:1;">
+                        <!-- Row labels + images -->
+                        <table style="width:100%; border-collapse:collapse; font-size:0.82em; text-align:center;">
+                            <tr>
+                                <td style="width:60px; writing-mode:vertical-rl; transform:rotate(180deg); font-weight:600; color:#d64b7a; padding-right:6px;">ParetoSlider</td>
+                                <td><img src="assets/baselines/t2i_cond/f0_realistic.jpg" style="width:100%; border-radius:4px;"></td>
+                                <td><img src="assets/baselines/t2i_cond/f1.jpg"           style="width:100%; border-radius:4px;"></td>
+                                <td><img src="assets/baselines/t2i_cond/f2.jpg"           style="width:100%; border-radius:4px;"></td>
+                                <td><img src="assets/baselines/t2i_cond/f3.jpg"           style="width:100%; border-radius:4px;"></td>
+                                <td><img src="assets/baselines/t2i_cond/f4_sketch.jpg"    style="width:100%; border-radius:4px;"></td>
+                            </tr>
+                            <tr>
+                                <td style="width:60px; writing-mode:vertical-rl; transform:rotate(180deg); font-weight:600; color:#6b7280; padding-right:6px;">FixedWeight</td>
+                                <td><img src="assets/baselines/t2i_noncond/f0_realistic.png" style="width:100%; border-radius:4px;"></td>
+                                <td><img src="assets/baselines/t2i_noncond/f1.png"           style="width:100%; border-radius:4px;"></td>
+                                <td><img src="assets/baselines/t2i_noncond/f2.png"           style="width:100%; border-radius:4px;"></td>
+                                <td><img src="assets/baselines/t2i_noncond/f3.png"           style="width:100%; border-radius:4px;"></td>
+                                <td><img src="assets/baselines/t2i_noncond/f4_sketch.png"    style="width:100%; border-radius:4px;"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="5" style="padding-top:6px; color:#6b7280; font-style:italic;">
+                                    Realistic ← &nbsp; \(\omega = (\omega_{\mathrm{real}},\, \omega_{\mathrm{sketch}})\) &nbsp; → Sketch
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- Baselines row -->
+                        <table style="width:100%; border-collapse:collapse; font-size:0.82em; text-align:center; margin-top:16px;">
+                            <tr>
+                                <td style="width:60px; writing-mode:vertical-rl; transform:rotate(180deg); font-weight:600; color:#6b7280; padding-right:6px;">FlowMulti</td>
+                                <td><img src="assets/baselines/flowmulti/ckpt100.jpg"  style="width:100%; border-radius:4px;"></td>
+                                <td><img src="assets/baselines/flowmulti/ckpt200.jpg"  style="width:100%; border-radius:4px;"></td>
+                                <td><img src="assets/baselines/flowmulti/ckpt300.jpg"  style="width:100%; border-radius:4px;"></td>
+                                <td style="width:60px; writing-mode:vertical-rl; transform:rotate(180deg); font-weight:600; color:#6b7280; padding-right:6px;">Prompting</td>
+                                <td><img src="assets/baselines/prompting/photo.jpg"    style="width:100%; border-radius:4px;"></td>
+                                <td><img src="assets/baselines/prompting/mix.jpg"      style="width:100%; border-radius:4px;"></td>
+                                <td><img src="assets/baselines/prompting/sketch.jpg"   style="width:100%; border-radius:4px;"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style="color:#6b7280;">Ep. 100</td>
+                                <td style="color:#6b7280;">Ep. 200</td>
+                                <td style="color:#6b7280;">Ep. 300</td>
+                                <td></td>
+                                <td style="color:#6b7280;">Realistic</td>
+                                <td style="color:#6b7280;">Mix</td>
+                                <td style="color:#6b7280;">Sketch</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <p class="method-caption">
+                    <strong>Pareto front and qualitative T2I comparison</strong> (SD3.5, Photorealism vs. Sketch) on the prompt <em>"A chocolate cake with frosting on a stand."</em>
+                    <span class="pareto-slider">ParetoSlider</span> traces a continuous trade-off curve by varying \(\omega\), dominating Fixed Weights, FlowMulti, and Prompt Rewriting baselines.
+                    FixedWeight requires a separate training run per point; FlowMulti produces a single static output; Prompting yields only three coarse points. None support continuous inference-time control.
+                </p>
+            </div>
+        </section>
+
     </div><!-- end .container -->
 
     <!-- ═══════════════════════════════ CITATION FOOTER ═══════════════════════════════ -->
