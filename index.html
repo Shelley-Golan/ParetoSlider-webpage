@@ -30,20 +30,19 @@
                         <span class="pareto-slider">ParetoSlider</span>:
                         Diffusion Models Post-Training for Continuous Reward Control
                     </h1>
-                    <h1 class="title"><span class="venue-text">ICCV 2025</span></h1>
 
                     <div class="header-authors">
-                        <span class="header-author">Shelly Golan</span>
-                        <span class="header-author">Michael Finkelson</span>
-                        <span class="header-author">Ariel Bereslavsky</span>
-                        <span class="header-author"><a href="https://yotamnitzan.github.io/" target="_blank">Yotam Nitzan</a></span>
-                        <span class="header-author"><a href="https://orpatashnik.github.io/" target="_blank">Or Patashnik</a></span>
+                        <span class="header-author"><a href="https://scholar.google.com/citations?user=_MHRaNIAAAAJ&hl=iw&oi=ao" target="_blank">Shelly Golan</a><sup>1</sup></span>
+                        <span class="header-author"><a href="https://scholar.google.com/citations?hl=iw&user=XnC36QEAAAAJ" target="_blank">Michael Finkelson</a><sup>1,2</sup></span>
+                        <span class="header-author">Ariel Bereslavsky<sup>1</sup></span>
+                        <span class="header-author"><a href="https://yotamnitzan.github.io/" target="_blank">Yotam Nitzan</a><sup>3</sup></span>
+                        <span class="header-author"><a href="https://orpatashnik.github.io/" target="_blank">Or Patashnik</a><sup>1</sup></span>
                     </div>
 
                     <div class="header-affiliations">
-                        <span class="header-affiliation">Tel Aviv University</span>&#8194;
-                        <span class="header-affiliation">Lightricks</span>&#8194;
-                        <span class="header-affiliation">Adobe Research</span>
+                        <sup>1</sup><span class="header-affiliation">Tel Aviv University</span>&#8194;
+                        <sup>2</sup><span class="header-affiliation">Lightricks</span>&#8194;
+                        <sup>3</sup><span class="header-affiliation">Adobe Research</span>
                     </div>
 
                     <!-- TL;DR -->
@@ -105,17 +104,25 @@
                 while uniquely providing fine-grained, real-time control over competing generative goals.
             </p>
 
-            <!-- Teaser figure -->
-            <div class="inline-teaser-container">
-                <img src="assets/teaser.png" alt="ParetoSlider enables smooth inference-time control over competing rewards via a single preference-conditioned model." class="inline-teaser-video">
-                <p class="teaser-caption">
-                    <strong>ParetoSlider</strong> enables smooth inference-time control over competing rewards
-                    via a single preference-conditioned model.
-                    <em>Top:</em> Text-to-image generation sliding between photorealism and sketch.
-                    <em>Bottom:</em> Image editing sliding between source preservation and prompt adherence.
-                </p>
-            </div>
         </section>
+
+        <!-- ═══════════════════════════════ TEASER VIDEO ═══════════════════════════════ -->
+        <div class="inline-teaser-container" style="margin: 30px 0;">
+            <video id="teaser-video" class="inline-teaser-video" autoplay muted playsinline>
+                <source src="assets/videoteaser.mp4" type="video/mp4">
+            </video>
+        </div>
+        <script>
+            (function() {
+                var vid = document.getElementById('teaser-video');
+                vid.addEventListener('ended', function() {
+                    setTimeout(function() {
+                        vid.currentTime = 0;
+                        vid.play();
+                    }, 5000);
+                });
+            })();
+        </script>
 
         <!-- ═══════════════════════════════ T2I INTERACTIVE EXAMPLES ═══════════════════════════════ -->
         <section class="interactive-examples">
@@ -123,54 +130,54 @@
             <p class="section-subtitle">Drag the slider to continuously navigate between photorealism and different artistic styles.</p>
             <div class="examples-grid-1x3">
 
-                <!-- Example 1: easter bunny, photo ↔ sketch -->
+                <!-- Example 1: lily, photo ↔ flat vector -->
                 <div class="example-tile">
                     <div class="example-instruction">
-                        'An easter bunny on a spring day in a field holding a basket of easter eggs'
+                        'a lily flower in a glass vase on a table'
                     </div>
                     <div class="example-slider-container">
                         <div class="slider-container">
                             <span class="strength-label small-label">Photorealistic</span>
                             <input type="range" id="bunny-slider" class="strength-slider" min="0" max="100" value="0" step="1">
-                            <span class="strength-label small-label">Sketch</span>
+                            <span class="strength-label small-label">Flat Vector</span>
                         </div>
                     </div>
                     <div class="example-result">
-                        <img id="bunny-image" src="assets/t2i_sketch_bunny/frame_0.jpg" alt="Easter Bunny" class="result-img">
+                        <img id="bunny-image" src="assets/t2i_flat_vector/frame_0.png" alt="Lily flat vector" class="result-img">
                     </div>
                 </div>
 
-                <!-- Example 2: hummingbird, photo ↔ flat vector -->
+                <!-- Example 2: traveler, photo ↔ animation -->
                 <div class="example-tile">
                     <div class="example-instruction">
-                        'A hummingbird hovering near bright tropical flowers'
+                        'a lone traveler standing on a high cliff above the sea'
                     </div>
                     <div class="example-slider-container">
                         <div class="slider-container">
                             <span class="strength-label small-label">Photorealistic</span>
                             <input type="range" id="hummingbird-slider" class="strength-slider" min="0" max="100" value="0" step="1">
-                            <span class="strength-label small-label">Flat Vector</span>
+                            <span class="strength-label small-label">Animation</span>
                         </div>
                     </div>
                     <div class="example-result">
-                        <img id="hummingbird-image" src="assets/t2i_vector_hummingbird/frame_0.png" alt="Hummingbird" class="result-img">
+                        <img id="hummingbird-image" src="assets/t2i_animation/frame_0.png" alt="Traveler animation" class="result-img">
                     </div>
                 </div>
 
-                <!-- Example 3: honeybee, photo ↔ watercolor -->
+                <!-- Example 3: dancer, photo ↔ anime -->
                 <div class="example-tile">
                     <div class="example-instruction">
-                        'A macro photo of a honeybee on a sunflower'
+                        'a dancer spinning with flowing clothes'
                     </div>
                     <div class="example-slider-container">
                         <div class="slider-container">
                             <span class="strength-label small-label">Photorealistic</span>
                             <input type="range" id="bee-slider" class="strength-slider" min="0" max="100" value="0" step="1">
-                            <span class="strength-label small-label">Watercolor</span>
+                            <span class="strength-label small-label">Anime</span>
                         </div>
                     </div>
                     <div class="example-result">
-                        <img id="bee-image" src="assets/t2i_watercolor_bee/frame_0.png" alt="Honeybee" class="result-img">
+                        <img id="bee-image" src="assets/t2i_anime/frame_0.png" alt="Dancer anime" class="result-img">
                     </div>
                 </div>
 
@@ -183,10 +190,10 @@
             <p class="section-subtitle">Drag the slider to navigate from full source preservation to full prompt adherence.</p>
             <div class="examples-grid">
 
-                <!-- Editing 1: pixel art -->
+                <!-- Editing 1: anime character -->
                 <div class="example-tile">
                     <div class="example-instruction">
-                        'Change this portrait into a pixel-art style'
+                        'Convert this portrait into an anime character'
                     </div>
                     <div class="example-slider-container">
                         <div class="slider-container">
@@ -196,34 +203,11 @@
                         </div>
                     </div>
                     <div class="example-result">
-                        <img id="edit-oliver-image" src="assets/edit_face_oliver/frame_0.png" alt="Pixel Art Edit" class="result-img">
+                        <img id="edit-oliver-image" src="assets/edit_anime_55/frame_0.jpg" alt="Anime Character Edit" class="result-img">
                     </div>
                 </div>
 
-                <!-- Editing 2: Pixar -->
-                <div class="example-tile">
-                    <div class="example-instruction">
-                        'Turn this into a 3D-rendered Disney Pixar scene'
-                    </div>
-                    <div class="example-slider-container">
-                        <div class="slider-container">
-                            <span class="strength-label small-label">Preserve</span>
-                            <input type="range" id="edit-pixar-slider" class="strength-slider" min="0" max="100" value="0" step="1">
-                            <span class="strength-label small-label">Edit</span>
-                        </div>
-                    </div>
-                    <div class="example-result">
-                        <img id="edit-pixar-image" src="assets/edit_face_25/frame_0.png" alt="Pixar Edit" class="result-img">
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="interactive-examples">
-            <div class="examples-grid">
-
-                <!-- Editing 3: warrior -->
+                <!-- Editing 2: warrior -->
                 <div class="example-tile">
                     <div class="example-instruction">
                         'Turn this woman into a warrior'
@@ -237,6 +221,29 @@
                     </div>
                     <div class="example-result">
                         <img id="edit-warrior-image" src="assets/edit_28/frame_0.png" alt="Warrior Edit" class="result-img">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="interactive-examples">
+            <div class="examples-grid">
+
+                <!-- Editing 3: Pixar -->
+                <div class="example-tile">
+                    <div class="example-instruction">
+                        'Turn this into a 3D-rendered Disney Pixar scene'
+                    </div>
+                    <div class="example-slider-container">
+                        <div class="slider-container">
+                            <span class="strength-label small-label">Preserve</span>
+                            <input type="range" id="edit-pixar-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                            <span class="strength-label small-label">Edit</span>
+                        </div>
+                    </div>
+                    <div class="example-result">
+                        <img id="edit-pixar-image" src="assets/edit_face_25/frame_0.png" alt="Pixar Edit" class="result-img">
                     </div>
                 </div>
 
@@ -260,39 +267,173 @@
             </div>
         </section>
 
+        <!-- ═══════════════════════════════ VIDEO EXAMPLES ═══════════════════════════════ -->
+        <section class="interactive-examples">
+            <h2>Text-to-Video: Style Control</h2>
+            <p class="section-subtitle">Drag the slider to navigate from photorealism to animation style.</p>
+            <div class="examples-grid">
+
+                <!-- Video 1: cat -->
+                <div class="example-tile">
+                    <div class="example-instruction">
+                        'A cat walking in a kitchen'
+                    </div>
+                    <div class="example-slider-container">
+                        <div class="slider-container">
+                            <span class="strength-label small-label">Photorealistic</span>
+                            <input type="range" id="cat-video-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                            <span class="strength-label small-label">Animation</span>
+                        </div>
+                    </div>
+                    <div class="example-result">
+                        <video id="cat-video" class="result-img" autoplay loop muted playsinline>
+                            <source src="assets/videos/cat_realistic.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Video 2: eye -->
+                <div class="example-tile">
+                    <div class="example-instruction">
+                        'A close-up of an eye blinking'
+                    </div>
+                    <div class="example-slider-container">
+                        <div class="slider-container">
+                            <span class="strength-label small-label">Photorealistic</span>
+                            <input type="range" id="eye-video-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                            <span class="strength-label small-label">Animation</span>
+                        </div>
+                    </div>
+                    <div class="example-result">
+                        <video id="eye-video" class="result-img" autoplay loop muted playsinline>
+                            <source src="assets/videos/eye_realistic.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Video 3: turtle -->
+                <div class="example-tile">
+                    <div class="example-instruction">
+                        'A turtle swimming'
+                    </div>
+                    <div class="example-slider-container">
+                        <div class="slider-container">
+                            <span class="strength-label small-label">Photorealistic</span>
+                            <input type="range" id="turtle-video-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                            <span class="strength-label small-label">Sketch</span>
+                        </div>
+                    </div>
+                    <div class="example-result">
+                        <video id="turtle-video" class="result-img" autoplay loop muted playsinline>
+                            <source src="assets/videos/turtle_realistic.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Video 4: butterfly -->
+                <div class="example-tile">
+                    <div class="example-instruction">
+                        'A butterfly flying and landing on a flower'
+                    </div>
+                    <div class="example-slider-container">
+                        <div class="slider-container">
+                            <span class="strength-label small-label">Photorealistic</span>
+                            <input type="range" id="butterfly-video-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                            <span class="strength-label small-label">Sketch</span>
+                        </div>
+                    </div>
+                    <div class="example-result">
+                        <video id="butterfly-video" class="result-img" autoplay loop muted playsinline>
+                            <source src="assets/videos/butterfly_realistic.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <script>
+        (function() {
+            var videoMappings = {
+                'cat-video-slider': {
+                    videoId: 'cat-video',
+                    sources: {
+                        0:   'assets/videos/cat_realistic.mp4',
+                        50:  'assets/videos/cat_balanced.mp4',
+                        100: 'assets/videos/cat_pixar.mp4'
+                    }
+                },
+                'eye-video-slider': {
+                    videoId: 'eye-video',
+                    sources: {
+                        0:   'assets/videos/eye_realistic.mp4',
+                        50:  'assets/videos/eye_balanced.mp4',
+                        100: 'assets/videos/eye_pixar.mp4'
+                    }
+                },
+                'turtle-video-slider': {
+                    videoId: 'turtle-video',
+                    sources: {
+                        0:   'assets/videos/turtle_realistic.mp4',
+                        50:  'assets/videos/turtle_balanced.mp4',
+                        100: 'assets/videos/turtle_sketch.mp4'
+                    }
+                },
+                'butterfly-video-slider': {
+                    videoId: 'butterfly-video',
+                    sources: {
+                        0:   'assets/videos/butterfly_realistic.mp4',
+                        50:  'assets/videos/butterfly_balanced.mp4',
+                        100: 'assets/videos/butterfly_sketch.mp4'
+                    }
+                }
+            };
+
+            function closestVideoKey(sources, value) {
+                var keys = Object.keys(sources).map(Number).sort(function(a,b){return a-b;});
+                var best = keys[0];
+                keys.forEach(function(k) {
+                    if (Math.abs(k - value) < Math.abs(best - value)) best = k;
+                });
+                return best;
+            }
+
+            function setupVideoSlider(sliderId, config) {
+                var slider = document.getElementById(sliderId);
+                var video  = document.getElementById(config.videoId);
+                if (!slider || !video) return;
+
+                slider.addEventListener('input', function() {
+                    var key = closestVideoKey(config.sources, parseInt(this.value));
+                    var newSrc = config.sources[key];
+                    if (video.currentSrc.indexOf(newSrc) === -1) {
+                        video.src = newSrc;
+                        video.load();
+                        video.play();
+                    }
+                });
+            }
+
+            Object.keys(videoMappings).forEach(function(sliderId) {
+                setupVideoSlider(sliderId, videoMappings[sliderId]);
+            });
+        })();
+        </script>
+
         <!-- ═══════════════════════════════ METHOD ═══════════════════════════════ -->
         <section class="method-section">
             <h2>Method</h2>
             <div class="method-content">
                 <p class="method-overview">
-                    <span class="pareto-slider">ParetoSlider</span> introduces a preference vector \(\omega\) that
-                    simultaneously serves as a dynamic weight for <em>normalized</em> rewards and as an explicit
-                    conditioning input to the network.
-                    Because the model is conditioned on \(\omega\), it develops the foresight to produce outputs that
-                    abide by the current relative reward preference — enabling it to learn the entire Pareto front
-                    within a single set of parameters.
+                    🎯 <strong>For each prompt and sampled \(\omega\), the policy generates \(K\) images,</strong> conditioning the denoising process on both the input and the user-specified preference vector.
                 </p>
                 <p class="method-overview">
-                    A key challenge is preventing "reward hijacking," where objectives with naturally high magnitudes
-                    dominate the learning signal. We address this with a <strong>late-scalarization</strong> strategy:
-                    per-reward advantages are normalized independently before weighted aggregation with \(\omega\).
-                    This ensures the optimization landscape is defined strictly by the preference vector, not by the
-                    arbitrary raw scales of the underlying reward functions.
+                    ⚖️ <strong>Each image is scored by \(M\) reward models and normalized into per-reward advantages,</strong> decoupling reward scales so the optimization faithfully respects \(\omega\).
                 </p>
                 <p class="method-overview">
-                    We build upon <a href="https://arxiv.org/abs/2502.01016" target="_blank" style="color:#1a73e8">DiffusionNFT</a>,
-                    computing NFT losses for each reward independently and aggregating only at the final step.
-                    At inference time, users simply adjust a single slider to navigate the full Pareto front
-                    in real time.
+                    🔧 <strong>A DiffusionNFT loss is computed per reward and aggregated with \(\omega\) before the gradient update,</strong> steering the model toward the desired Pareto-optimal trade-off.
                 </p>
 
                 <img src="assets/method_figure.png" alt="ParetoSlider method architecture" class="method-img">
-                <p class="method-caption">
-                    <strong>ParetoSlider training pipeline.</strong>
-                    (1) For each prompt and sampled \(\omega\), the policy generates \(K\) images,
-                    (2) which are scored by \(M\) reward models and normalized into per-reward advantages.
-                    (3) A DiffusionNFT loss is computed per reward and aggregated with \(\omega\) before the gradient update.
-                </p>
             </div>
         </section>
 
@@ -301,13 +442,13 @@
     <!-- ═══════════════════════════════ CITATION FOOTER ═══════════════════════════════ -->
     <footer class="citation-footer">
         <div class="container">
-            <h3>Citation</h3>
+            <h3>BibTeX</h3>
             <div class="bibtex-container">
-                <pre class="bibtex-code">@inproceedings{golan2025paretoSlider,
-    title={{ParetoSlider}: Diffusion Models Post-Training for Continuous Reward Control},
-    author={Golan, Shelly and Finkelson, Michael and Bereslavsky, Ariel and Nitzan, Yotam and Patashnik, Or},
-    booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
-    year={2025}
+                <pre class="bibtex-code">@article{golan2025paretoSlider,
+  title={{ParetoSlider}: Diffusion Models Post-Training for Continuous Reward Control},
+  author={Golan, Shelly and Finkelson, Michael and Bereslavsky, Ariel and Nitzan, Yotam and Patashnik, Or},
+  journal={arXiv preprint arXiv:2506.XXXXX},
+  year={2025}
 }</pre>
                 <button class="copy-bibtex-btn" onclick="copyBibTeX()">Copy BibTeX</button>
             </div>

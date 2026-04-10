@@ -48,29 +48,48 @@ const MAPPINGS = {
         100: 'assets/teaser_crane/frame_4.png'    // 100% sketch
     },
 
-    // T2I examples (3 frames: photo → balanced → style)
+    // T2I examples (9 frames: photo → style)
     'bunny': {
-        0:   'assets/t2i_sketch_bunny/frame_0.jpg',
-        50:  'assets/t2i_sketch_bunny/frame_1.jpg',
-        100: 'assets/t2i_sketch_bunny/frame_2.jpg'
+        0: 'assets/t2i_flat_vector/frame_0.png',
+        13: 'assets/t2i_flat_vector/frame_1.png',
+        25: 'assets/t2i_flat_vector/frame_2.png',
+        38: 'assets/t2i_flat_vector/frame_3.png',
+        50: 'assets/t2i_flat_vector/frame_4.png',
+        63: 'assets/t2i_flat_vector/frame_5.png',
+        75: 'assets/t2i_flat_vector/frame_6.png',
+        88: 'assets/t2i_flat_vector/frame_7.png',
+        100: 'assets/t2i_flat_vector/frame_8.png'
     },
     'hummingbird': {
-        0:   'assets/t2i_vector_hummingbird/frame_0.png',
-        50:  'assets/t2i_vector_hummingbird/frame_1.png',
-        100: 'assets/t2i_vector_hummingbird/frame_2.png'
+        0: 'assets/t2i_animation/frame_0.png',
+        13: 'assets/t2i_animation/frame_1.png',
+        25: 'assets/t2i_animation/frame_2.png',
+        38: 'assets/t2i_animation/frame_3.png',
+        50: 'assets/t2i_animation/frame_4.png',
+        63: 'assets/t2i_animation/frame_5.png',
+        75: 'assets/t2i_animation/frame_6.png',
+        88: 'assets/t2i_animation/frame_7.png',
+        100: 'assets/t2i_animation/frame_8.png'
     },
     'bee': {
-        0:   'assets/t2i_watercolor_bee/frame_0.png',
-        50:  'assets/t2i_watercolor_bee/frame_1.png',
-        100: 'assets/t2i_watercolor_bee/frame_2.png'
+        0: 'assets/t2i_anime/frame_0.png',
+        13: 'assets/t2i_anime/frame_1.png',
+        25: 'assets/t2i_anime/frame_2.png',
+        38: 'assets/t2i_anime/frame_3.png',
+        50: 'assets/t2i_anime/frame_4.png',
+        63: 'assets/t2i_anime/frame_5.png',
+        75: 'assets/t2i_anime/frame_6.png',
+        88: 'assets/t2i_anime/frame_7.png',
+        100: 'assets/t2i_anime/frame_8.png'
     },
 
-    // Editing examples (4 frames: input → preserve → balanced → edit)
+    // Editing examples
     'edit-oliver': {
-        0:   'assets/edit_face_oliver/frame_0.png',
-        33:  'assets/edit_face_oliver/frame_1.png',
-        67:  'assets/edit_face_oliver/frame_2.png',
-        100: 'assets/edit_face_oliver/frame_3.png'
+        0:   'assets/edit_anime_55/frame_0.jpg',
+        25:  'assets/edit_anime_55/frame_1.jpg',
+        50:  'assets/edit_anime_55/frame_2.jpg',
+        75:  'assets/edit_anime_55/frame_3.jpg',
+        100: 'assets/edit_anime_55/frame_4.jpg'
     },
     'edit-pixar': {
         0:   'assets/edit_face_25/frame_0.png',
