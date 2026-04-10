@@ -72,15 +72,15 @@ const MAPPINGS = {
         100: 'assets/t2i_animation/frame_8.png'
     },
     'bee': {
-        0: 'assets/t2i_anime/frame_0.png',
-        13: 'assets/t2i_anime/frame_1.png',
-        25: 'assets/t2i_anime/frame_2.png',
-        38: 'assets/t2i_anime/frame_3.png',
-        50: 'assets/t2i_anime/frame_4.png',
-        63: 'assets/t2i_anime/frame_5.png',
-        75: 'assets/t2i_anime/frame_6.png',
-        88: 'assets/t2i_anime/frame_7.png',
-        100: 'assets/t2i_anime/frame_8.png'
+        0: 'assets/t2i_watercolor/frame_0.png',
+        13: 'assets/t2i_watercolor/frame_1.png',
+        25: 'assets/t2i_watercolor/frame_2.png',
+        38: 'assets/t2i_watercolor/frame_3.png',
+        50: 'assets/t2i_watercolor/frame_4.png',
+        63: 'assets/t2i_watercolor/frame_5.png',
+        75: 'assets/t2i_watercolor/frame_6.png',
+        88: 'assets/t2i_watercolor/frame_7.png',
+        100: 'assets/t2i_watercolor/frame_8.png'
     },
 
     // Editing examples
