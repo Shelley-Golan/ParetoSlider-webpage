@@ -123,6 +123,24 @@
             })();
         </script>
 
+        <!-- ═══════════════════════════════ METHOD ═══════════════════════════════ -->
+        <section class="method-section">
+            <h2>Method</h2>
+            <div class="method-content">
+                <p class="method-overview">
+                    🎯 <strong>For each prompt and sampled \(\omega\), the policy generates \(K\) images,</strong> conditioning the denoising process on both the input and the user-specified preference vector.
+                </p>
+                <p class="method-overview">
+                    ⚖️ <strong>Each image is scored by \(M\) reward models and normalized into per-reward advantages,</strong> decoupling reward scales so the optimization faithfully respects \(\omega\).
+                </p>
+                <p class="method-overview">
+                    🔧 <strong>A DiffusionNFT loss is computed per reward and aggregated with \(\omega\) before the gradient update,</strong> steering the model toward the desired Pareto-optimal trade-off.
+                </p>
+
+                <img src="assets/method_figure.png" alt="ParetoSlider method architecture" class="method-img">
+            </div>
+        </section>
+
         <!-- ═══════════════════════════════ T2I INTERACTIVE EXAMPLES ═══════════════════════════════ -->
         <section class="interactive-examples">
             <h2>Text-to-Image: Style Control</h2>
@@ -433,24 +451,6 @@
             });
         })();
         </script>
-
-        <!-- ═══════════════════════════════ METHOD ═══════════════════════════════ -->
-        <section class="method-section">
-            <h2>Method</h2>
-            <div class="method-content">
-                <p class="method-overview">
-                    🎯 <strong>For each prompt and sampled \(\omega\), the policy generates \(K\) images,</strong> conditioning the denoising process on both the input and the user-specified preference vector.
-                </p>
-                <p class="method-overview">
-                    ⚖️ <strong>Each image is scored by \(M\) reward models and normalized into per-reward advantages,</strong> decoupling reward scales so the optimization faithfully respects \(\omega\).
-                </p>
-                <p class="method-overview">
-                    🔧 <strong>A DiffusionNFT loss is computed per reward and aggregated with \(\omega\) before the gradient update,</strong> steering the model toward the desired Pareto-optimal trade-off.
-                </p>
-
-                <img src="assets/method_figure.png" alt="ParetoSlider method architecture" class="method-img">
-            </div>
-        </section>
 
         <!-- ═══════════════════════════════ COMPARISONS ═══════════════════════════════ -->
         <section class="method-section">
