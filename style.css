@@ -400,10 +400,11 @@ html {
 
 .edit-input-col .result-img,
 .edit-output-col .result-img {
-    aspect-ratio: 1 / 1;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+    height: 240px;
+    width: auto;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
     border-radius: 6px;
 }
 
