@@ -549,23 +549,53 @@ html {
 
 /* ═══════════════════════════ RESPONSIVE ═══════════════════════════ */
 @media (max-width: 768px) {
+    /* Layout */
     .container { padding: 15px; }
     .header { padding: 30px 0; }
     .header-content { flex-direction: column; gap: 30px; padding: 0 20px; min-height: auto; }
-    .title { font-size: 1.8em; text-align: center; }
+    .teaser-column { width: 100%; }
+    .teaser-container { margin-top: 20px; padding: 20px; }
+
+    /* Typography */
+    .title { font-size: 1.5em; text-align: center; }
     .paper-details { text-align: center; }
     .links { text-align: center; }
     .link-button { display: block; margin: 10px auto; width: 200px; }
     .header-author { display: block; margin: 8px 0; font-size: 1em; }
-    .teaser-container { margin-top: 20px; padding: 20px; }
-    .examples-grid, .examples-grid-1x3 { grid-template-columns: 1fr; gap: 20px; }
+
+    /* Teaser video */
+    .inline-teaser-video { max-height: 260px; }
+
+    /* All example grids → single column */
+    .examples-grid,
+    .examples-grid-1x3,
+    .examples-grid-1x4 { grid-template-columns: 1fr; gap: 16px; }
+
+    /* Edit tiles: stack input above output */
+    .edit-result-row { flex-direction: column; gap: 10px; }
+    .edit-input-col { flex: none; width: 100%; }
+    .edit-input-col .result-img,
+    .edit-output-col .result-img { height: 200px; width: auto; max-width: 100%; }
+
+    /* Method */
     .method-img { max-width: 100%; }
-    .method-section { padding: 30px 20px; }
+    .method-section { padding: 24px 15px; }
+    .method-overview { font-size: 0.95em; }
+
+    /* Comparisons: stack plot above grid, allow table scroll */
+    .method-section .method-content > div:first-child { flex-direction: column !important; }
+    .method-section .method-content > div:first-child > div:first-child { flex: none !important; width: 100% !important; }
+    .method-section table { font-size: 0.65em; overflow-x: auto; display: block; }
+
+    /* Abstract */
+    .abstract-section { padding: 20px 15px; }
+    .abstract-text { font-size: 0.95em; }
+
+    /* Citation */
     .citation-footer .container { padding: 0 20px; }
     .citation-footer h3 { font-size: 1.6rem; }
-    .bibtex-code { font-size: 12px; padding: 20px; }
+    .bibtex-code { font-size: 11px; padding: 16px; }
     .copy-bibtex-btn { position: static; display: block; margin: 20px auto 0; width: fit-content; }
-    .inline-teaser-video { max-height: 350px; }
 }
 
 /* ── image placeholder ── */
