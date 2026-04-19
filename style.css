@@ -633,17 +633,13 @@ html, body { overflow-x: hidden; max-width: 100%; }
     /* Hide text label rows (Ep. 100 / Realistic etc.) */
     .comparison-grid-wrapper tr:last-child { display: none; }
 
-    /* Method name labels: switch to horizontal text */
+    /* Method name labels: keep rotation, constrain width */
     .comparison-grid-wrapper td[style*="writing-mode"] {
-        writing-mode: horizontal-tb !important;
-        transform: none !important;
-        width: 58px !important;
-        min-width: 58px !important;
+        width: 22px !important;
+        min-width: 22px !important;
         font-size: 0.62em !important;
         padding: 2px !important;
-        text-align: center;
         flex-shrink: 0;
-        line-height: 1.2;
     }
 
     /* Image cells: fixed square size */
