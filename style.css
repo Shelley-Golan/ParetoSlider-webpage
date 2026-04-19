@@ -615,16 +615,19 @@ html, body { overflow-x: hidden; max-width: 100%; }
         flex: none !important;
         width: 100% !important;
     }
-    /* Tables: scrollable horizontally */
+    /* Tables: scrollable horizontally, all columns intact */
     .method-section table {
         display: block;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         font-size: 0.6em;
+        width: 100%;
     }
-    /* Hide vertical row labels on mobile to save space */
+    /* Shrink vertical row labels instead of hiding them */
     .method-section table td[style*="writing-mode"] {
-        display: none;
+        font-size: 0.75em;
+        width: 20px !important;
+        padding-right: 2px !important;
     }
 
     /* Citation */
