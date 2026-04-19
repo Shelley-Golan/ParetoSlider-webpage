@@ -551,8 +551,8 @@ html {
 html, body { overflow-x: hidden; max-width: 100%; }
 
 @media (max-width: 768px) {
-    /* Prevent any element from causing horizontal scroll */
-    * { max-width: 100%; box-sizing: border-box; }
+    /* Prevent images/videos from overflowing */
+    img, video { max-width: 100%; }
 
     /* Container */
     .container { padding: 15px; width: 100%; }
@@ -615,19 +615,14 @@ html, body { overflow-x: hidden; max-width: 100%; }
         flex: none !important;
         width: 100% !important;
     }
-    /* Tables: scrollable horizontally, all columns intact */
-    .method-section table {
-        display: block;
+    /* Comparison tables: scroll horizontally as a unit */
+    .comparison-grid-wrapper {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        font-size: 0.6em;
-        width: 100%;
     }
-    /* Shrink vertical row labels instead of hiding them */
-    .method-section table td[style*="writing-mode"] {
-        font-size: 0.75em;
-        width: 20px !important;
-        padding-right: 2px !important;
+    .comparison-grid-wrapper table {
+        min-width: 380px;
+        font-size: 0.65em;
     }
 
     /* Citation */
