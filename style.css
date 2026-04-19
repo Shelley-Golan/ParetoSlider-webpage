@@ -546,52 +546,93 @@ html {
 .copy-bibtex-btn:active { transform: translateY(0); }
 
 /* ═══════════════════════════ RESPONSIVE ═══════════════════════════ */
+
+/* Prevent horizontal overflow globally */
+html, body { overflow-x: hidden; max-width: 100%; }
+
 @media (max-width: 768px) {
-    /* Layout */
-    .container { padding: 15px; }
-    .header { padding: 30px 0; }
-    .header-content { flex-direction: column; gap: 30px; padding: 0 20px; min-height: auto; }
+    /* Prevent any element from causing horizontal scroll */
+    * { max-width: 100%; box-sizing: border-box; }
+
+    /* Container */
+    .container { padding: 15px; width: 100%; }
+
+    /* Header: disable full-bleed trick on mobile, stack columns */
+    .header { width: 100%; margin-left: 0; padding: 24px 0; }
+    .header-content { flex-direction: column; gap: 24px; padding: 0 15px; min-height: auto; }
+    .paper-details { text-align: center; width: 100%; }
     .teaser-column { width: 100%; }
-    .teaser-container { margin-top: 20px; padding: 20px; }
+    .teaser-container { margin-top: 10px; padding: 15px; }
 
     /* Typography */
-    .title { font-size: 1.5em; text-align: center; }
-    .paper-details { text-align: center; }
+    .title { font-size: 1.4em; text-align: center; line-height: 1.4; }
     .links { text-align: center; }
-    .link-button { display: block; margin: 10px auto; width: 200px; }
-    .header-author { display: block; margin: 8px 0; font-size: 1em; }
+    .link-button { display: inline-block; margin: 6px 4px; width: auto; padding: 8px 16px; }
+    .header-author { display: inline-block; margin: 4px 8px; font-size: 0.95em; }
+    .header-affiliations { font-size: 0.9em; }
+    .tldr-content { font-size: 0.95em; }
+
+    /* Teaser image in header */
+    .teaser-container .result-img { max-width: 100%; height: auto; }
 
     /* Teaser video */
-    .inline-teaser-video { max-height: 260px; }
+    .inline-teaser-video { max-height: 220px; width: 100%; }
+    .inline-teaser-container { margin: 20px 0; }
+
+    /* Abstract */
+    .abstract-section { padding: 18px 15px; margin: 20px 0; }
+    .abstract-text { font-size: 0.95em; }
+
+    /* Section headings */
+    .interactive-examples h2 { font-size: 1.4em; }
+    .interactive-examples { margin: 30px 0; }
 
     /* All example grids → single column */
     .examples-grid,
     .examples-grid-1x3,
-    .examples-grid-1x4 { grid-template-columns: 1fr; gap: 16px; }
+    .examples-grid-1x4 { grid-template-columns: 1fr; gap: 14px; margin-top: 14px; }
+
+    /* Slider labels: shrink so they don't overflow */
+    .strength-label.small-label { font-size: 0.7em; min-width: 40px; }
+    .slider-container { gap: 6px; }
 
     /* Edit tiles: stack input above output */
-    .edit-result-row { flex-direction: column; gap: 10px; }
-    .edit-input-col { flex: none; width: 100%; }
+    .edit-result-row { flex-direction: column; gap: 8px; }
+    .edit-input-col,
+    .edit-output-col { flex: none; width: 100%; }
 
     /* Method */
+    .method-section { padding: 20px 15px; margin: 30px 0; }
     .method-img { max-width: 100%; }
-    .method-section { padding: 24px 15px; }
     .method-overview { font-size: 0.95em; }
 
-    /* Comparisons: stack plot above grid, allow table scroll */
-    .method-section .method-content > div:first-child { flex-direction: column !important; }
-    .method-section .method-content > div:first-child > div:first-child { flex: none !important; width: 100% !important; }
-    .method-section table { font-size: 0.65em; overflow-x: auto; display: block; }
-
-    /* Abstract */
-    .abstract-section { padding: 20px 15px; }
-    .abstract-text { font-size: 0.95em; }
+    /* Comparisons: stack Pareto plot above baseline grid */
+    .method-section .method-content > div:first-child {
+        flex-direction: column !important;
+        gap: 16px !important;
+    }
+    .method-section .method-content > div:first-child > div:first-child {
+        flex: none !important;
+        width: 100% !important;
+    }
+    /* Tables: scrollable horizontally */
+    .method-section table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        font-size: 0.6em;
+    }
+    /* Hide vertical row labels on mobile to save space */
+    .method-section table td[style*="writing-mode"] {
+        display: none;
+    }
 
     /* Citation */
-    .citation-footer .container { padding: 0 20px; }
-    .citation-footer h3 { font-size: 1.6rem; }
-    .bibtex-code { font-size: 11px; padding: 16px; }
-    .copy-bibtex-btn { position: static; display: block; margin: 20px auto 0; width: fit-content; }
+    .citation-footer { padding: 30px 0; }
+    .citation-footer .container { padding: 0 15px; }
+    .citation-footer h3 { font-size: 1.4rem; }
+    .bibtex-code { font-size: 10px; padding: 14px; }
+    .copy-bibtex-btn { position: static; display: block; margin: 16px auto 0; width: fit-content; }
 }
 
 /* ── image placeholder ── */
