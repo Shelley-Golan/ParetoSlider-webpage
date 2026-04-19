@@ -615,16 +615,49 @@ html, body { overflow-x: hidden; max-width: 100%; }
         flex: none !important;
         width: 100% !important;
     }
-    /* Comparison tables: scroll horizontally as a unit */
-    .comparison-grid-wrapper {
+    /* Comparison tables: each row is its own scroll strip */
+    .comparison-grid-wrapper { width: 100%; min-width: 0; overflow: hidden; }
+
+    .comparison-grid-wrapper table,
+    .comparison-grid-wrapper tbody { display: block; width: 100%; }
+
+    .comparison-grid-wrapper tr {
+        display: flex;
+        align-items: center;
+        gap: 3px;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        min-width: 0;
-        width: 100%;
+        margin-bottom: 6px;
     }
-    .comparison-grid-wrapper table {
-        min-width: 360px;
-        font-size: 0.65em;
+
+    /* Hide text label rows (Ep. 100 / Realistic etc.) */
+    .comparison-grid-wrapper tr:last-child { display: none; }
+
+    /* Method name labels: switch to horizontal text */
+    .comparison-grid-wrapper td[style*="writing-mode"] {
+        writing-mode: horizontal-tb !important;
+        transform: none !important;
+        width: 58px !important;
+        min-width: 58px !important;
+        font-size: 0.62em !important;
+        padding: 2px !important;
+        text-align: center;
+        flex-shrink: 0;
+        line-height: 1.2;
+    }
+
+    /* Image cells: fixed square size */
+    .comparison-grid-wrapper td:not([style*="writing-mode"]) {
+        flex-shrink: 0;
+        width: 60px;
+        min-width: 60px;
+    }
+    .comparison-grid-wrapper td img {
+        width: 60px !important;
+        height: 60px !important;
+        max-width: none !important;
+        object-fit: cover;
+        display: block;
     }
 
     /* Citation */
