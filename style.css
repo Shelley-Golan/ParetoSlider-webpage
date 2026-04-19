@@ -402,7 +402,7 @@ html {
 .edit-output-col .result-img {
     height: 240px;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
     border-radius: 6px;
     background-color: #f3f4f6;
 }
