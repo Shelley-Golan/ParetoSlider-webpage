@@ -487,6 +487,14 @@ html {
     text-align: right;
 }
 
+/* ── T2I grid: equalise slider area height so images align across all 3 tiles ── */
+.examples-grid-1x3 .example-slider-container {
+    min-height: 88px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
 /* ── Small slider labels ── */
 .strength-label.small-label {
     font-size: 0.78em;
