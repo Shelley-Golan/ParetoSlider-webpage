@@ -487,12 +487,15 @@ html {
     text-align: right;
 }
 
-/* ── T2I grid: equalise slider area height so images align across all 3 tiles ── */
-.examples-grid-1x3 .example-slider-container {
-    min-height: 88px;
+/* ── T2I grid: push result image to bottom so images align across tiles ──
+   Slider stays right under the prompt; only the image floats to the bottom. */
+.examples-grid-1x3 .example-tile {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+}
+
+.examples-grid-1x3 .example-result {
+    margin-top: auto;
 }
 
 /* ── Small slider labels ── */
