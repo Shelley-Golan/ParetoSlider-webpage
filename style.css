@@ -468,6 +468,19 @@ html {
     font-style: italic;
 }
 
+/* ── Triangle slider ── */
+.triangle-slider-container {
+    margin-bottom: 10px;
+    position: relative;
+}
+.tri-canvas {
+    width: 100%;
+    cursor: crosshair;
+    border-radius: 8px;
+    display: block;
+    touch-action: none;
+}
+
 /* ── Small slider labels ── */
 .strength-label.small-label {
     font-size: 0.78em;
