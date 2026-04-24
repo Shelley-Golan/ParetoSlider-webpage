@@ -154,20 +154,21 @@ html {
     display: inline-block;
     padding: 10px 22px;
     margin: 0 10px 10px 0;
-    background-color: transparent;
-    color: #d64b7a;
+    background: linear-gradient(135deg, #4a7fd7, #d64b7a);
+    color: #ffffff;
     text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
+    border-radius: 8px;
+    font-weight: 600;
     transition: all 0.3s ease;
-    border: 1.5px solid #d64b7a;
+    border: none;
+    box-shadow: 0 3px 10px rgba(107, 75, 175, 0.25);
 }
 
 .link-button:hover {
-    background-color: #d64b7a;
+    background: linear-gradient(135deg, #3968b8, #b83a64);
     color: #ffffff;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(214, 75, 122, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(107, 75, 175, 0.35);
 }
 
 /* ═══════════════════════════ TEASER CONTAINER ═══════════════════════════ */
