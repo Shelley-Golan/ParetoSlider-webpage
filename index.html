@@ -181,16 +181,27 @@
                     </div>
                 </div>
 
-                <!-- Example 3: knight, triangle slider (photorealism / watercolor / sketch) -->
+                <!-- Example 3: knight, 3-style sliders (photorealism / watercolor / sketch) -->
                 <div class="example-tile">
                     <div class="example-instruction">
                         'a knight kneeling before a stained glass window'
                     </div>
-                    <div class="triangle-slider-container">
-                        <canvas id="tri-canvas" class="tri-canvas"></canvas>
+                    <div class="example-slider-container">
+                        <div class="slider-container">
+                            <span class="strength-label small-label">Photorealistic</span>
+                            <input type="range" id="tri-photo-slider" class="strength-slider" min="0" max="100" value="100" step="1">
+                        </div>
+                        <div class="slider-container">
+                            <span class="strength-label small-label">Watercolor</span>
+                            <input type="range" id="tri-water-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                        </div>
+                        <div class="slider-container">
+                            <span class="strength-label small-label">Sketch</span>
+                            <input type="range" id="tri-sketch-slider" class="strength-slider" min="0" max="100" value="0" step="1">
+                        </div>
                     </div>
                     <div class="example-result">
-                        <img id="tri-image" src="assets/t2i_triangle/pickscore_photorealism1.00_qwen_style_sketch0.00_qwen_style_watercolor0.00_seed0042.png" alt="Triangle style control" class="result-img">
+                        <img id="tri-image" src="assets/t2i_triangle/pickscore_photorealism1.00_qwen_style_sketch0.00_qwen_style_watercolor0.00_seed0042.png" alt="3-style control" class="result-img">
                     </div>
                 </div>
 
@@ -199,22 +210,12 @@
 
         <script>
         (function() {
-            var canvas = document.getElementById('tri-canvas');
-            var img    = document.getElementById('tri-image');
-            if (!canvas || !img) return;
+            var sPhoto  = document.getElementById('tri-photo-slider');
+            var sWater  = document.getElementById('tri-water-slider');
+            var sSketch = document.getElementById('tri-sketch-slider');
+            var img     = document.getElementById('tri-image');
+            if (!sPhoto || !sWater || !sSketch || !img) return;
 
-            // Internal canvas resolution
-            var CW = 300, CH = 190;
-            canvas.width  = CW;
-            canvas.height = CH;
-            var ctx = canvas.getContext('2d');
-
-            // Triangle vertices  (Photo=top, Watercolor=bottom-left, Sketch=bottom-right)
-            var vP = {x: CW/2,  y: 18,      pv:1, wv:0, sv:0};
-            var vW = {x: 18,    y: CH-18,   pv:0, wv:1, sv:0};
-            var vS = {x: CW-18, y: CH-18,   pv:0, wv:0, sv:1};
-
-            // All 21 sample points (exact string values for filenames)
             var SAMPLES = [
                 {p:'0.00',s:'0.00',w:'1.00'}, {p:'0.00',s:'0.20',w:'0.80'},
                 {p:'0.00',s:'0.40',w:'0.60'}, {p:'0.00',s:'0.60',w:'0.40'},
@@ -232,98 +233,44 @@
                 s.pv = parseFloat(s.p); s.sv = parseFloat(s.s); s.wv = parseFloat(s.w);
             });
 
-            // Current dot position in barycentric coords
-            var cur = {pv:1, wv:0, sv:0};
-
-            function baryToPixel(b) {
-                return {
-                    x: b.pv*vP.x + b.wv*vW.x + b.sv*vS.x,
-                    y: b.pv*vP.y + b.wv*vW.y + b.sv*vS.y
-                };
-            }
-
-            function pixelToBary(px, py) {
-                var denom = (vW.y-vS.y)*(vP.x-vS.x) + (vS.x-vW.x)*(vP.y-vS.y);
-                var alpha = ((vW.y-vS.y)*(px-vS.x) + (vS.x-vW.x)*(py-vS.y)) / denom;
-                var beta  = ((vS.y-vP.y)*(px-vS.x) + (vP.x-vS.x)*(py-vS.y)) / denom;
-                var gamma = 1 - alpha - beta;
-                // Clamp to triangle
-                var a = Math.max(0, alpha), b2 = Math.max(0, beta), g = Math.max(0, gamma);
-                var sum = a + b2 + g || 1;
-                return {pv: a/sum, wv: b2/sum, sv: g/sum};
-            }
-
-            function nearest(b) {
+            function nearest(pv, wv, sv) {
                 var best = SAMPLES[0], bestD = 1e9;
                 SAMPLES.forEach(function(s) {
-                    var d = (s.pv-b.pv)*(s.pv-b.pv)+(s.wv-b.wv)*(s.wv-b.wv)+(s.sv-b.sv)*(s.sv-b.sv);
+                    var d = (s.pv-pv)*(s.pv-pv) + (s.wv-wv)*(s.wv-wv) + (s.sv-sv)*(s.sv-sv);
                     if (d < bestD) { bestD = d; best = s; }
                 });
                 return best;
             }
 
-            function draw() {
-                ctx.clearRect(0, 0, CW, CH);
-
-                // Triangle fill – matches slider track tone
-                ctx.beginPath();
-                ctx.moveTo(vP.x, vP.y); ctx.lineTo(vW.x, vW.y); ctx.lineTo(vS.x, vS.y);
-                ctx.closePath();
-                ctx.fillStyle = 'rgba(74,127,215,0.06)';
-                ctx.fill();
-                ctx.strokeStyle = '#e5e7eb';
-                ctx.lineWidth = 1.5;
-                ctx.stroke();
-
-                // Corner labels – matches .strength-label.small-label style
-                ctx.font = '11px Georgia, serif';
-                ctx.fillStyle = '#6b7280';
-                ctx.textAlign = 'center';
-                ctx.fillText('Photorealistic', vP.x, vP.y - 6);
-                ctx.fillText('Watercolor', vW.x, vW.y + 14);
-                ctx.fillText('Sketch', vS.x, vS.y + 14);
-
-                // Dot – matches slider thumb gradient
-                var dp = baryToPixel(cur);
-                var g = ctx.createLinearGradient(dp.x - 10, dp.y - 10, dp.x + 10, dp.y + 10);
-                g.addColorStop(0, '#4a7fd7');
-                g.addColorStop(1, '#d64b7a');
-                ctx.beginPath();
-                ctx.arc(dp.x, dp.y, 10, 0, Math.PI*2);
-                ctx.fillStyle = g;
-                ctx.shadowColor = 'rgba(107,75,175,0.35)';
-                ctx.shadowBlur = 6;
-                ctx.shadowOffsetY = 2;
-                ctx.fill();
-                ctx.shadowBlur = 0;
-                ctx.strokeStyle = '#fff';
-                ctx.lineWidth = 2;
-                ctx.stroke();
-            }
-
-            function update(px, py) {
-                cur = pixelToBary(px, py);
-                var s = nearest(cur);
+            function updateImage() {
+                var pv = parseInt(sPhoto.value)  / 100;
+                var wv = parseInt(sWater.value)  / 100;
+                var sv = parseInt(sSketch.value) / 100;
+                var s = nearest(pv, wv, sv);
                 var path = 'assets/t2i_triangle/pickscore_photorealism'+s.p+'_qwen_style_sketch'+s.s+'_qwen_style_watercolor'+s.w+'_seed0042.png';
                 if (img.getAttribute('src') !== path) img.src = path;
-                draw();
             }
 
-            function getPos(e, touch) {
-                var r = canvas.getBoundingClientRect();
-                var scaleX = CW / r.width, scaleY = CH / r.height;
-                var src = touch ? e.touches[0] : e;
-                return { x: (src.clientX - r.left)*scaleX, y: (src.clientY - r.top)*scaleY };
+            // When one slider moves, scale the other two proportionally so all three sum to 100
+            function onSlide(changed, other1, other2) {
+                var val = parseInt(changed.value);
+                var remaining = 100 - val;
+                var o1 = parseInt(other1.value), o2 = parseInt(other2.value);
+                var otherSum = o1 + o2;
+                if (otherSum === 0) {
+                    other1.value = other2.value = remaining / 2;
+                } else {
+                    other1.value = Math.round(o1 / otherSum * remaining);
+                    other2.value = 100 - val - parseInt(other1.value);
+                }
+                updateImage();
             }
 
-            var dragging = false;
-            canvas.addEventListener('mousedown',  function(e){ dragging=true; var p=getPos(e); update(p.x,p.y); });
-            canvas.addEventListener('mousemove',  function(e){ if(dragging){ var p=getPos(e); update(p.x,p.y); } });
-            document.addEventListener('mouseup',  function(){ dragging=false; });
-            canvas.addEventListener('touchstart', function(e){ e.preventDefault(); var p=getPos(e,true); update(p.x,p.y); }, {passive:false});
-            canvas.addEventListener('touchmove',  function(e){ e.preventDefault(); var p=getPos(e,true); update(p.x,p.y); }, {passive:false});
+            sPhoto.addEventListener('input',  function(){ onSlide(sPhoto,  sWater,  sSketch); });
+            sWater.addEventListener('input',  function(){ onSlide(sWater,  sPhoto,  sSketch); });
+            sSketch.addEventListener('input', function(){ onSlide(sSketch, sPhoto,  sWater);  });
 
-            draw();
+            updateImage();
         })();
         </script>
 
