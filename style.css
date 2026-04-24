@@ -481,6 +481,12 @@ html {
     touch-action: none;
 }
 
+/* ── 3-style slider: fixed-width labels so all sliders align ── */
+.tri-label {
+    min-width: 105px !important;
+    text-align: right;
+}
+
 /* ── Small slider labels ── */
 .strength-label.small-label {
     font-size: 0.78em;
